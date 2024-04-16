@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Sitema para Controle de Atendimentos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Sitema para Controle de Atendimentos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-input readonly="true" label="Senha: " [(ngModel)]="senhasService.inputNovaSenha"></ion-input>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button color="dark" expand="block" (click)="senhasService.novaSenha('SG')">Senha Geral</ion-button>
+      <ion-button color="danger" expand="block" (click)="senhasService.novaSenha('SP')">Senha Prioritária</ion-button>
+      <ion-button color="success" expand="block" (click)="senhasService.novaSenha('SE')">Senha Exame</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>Últimas senhas chamadas:</ion-list-header>
+        <ion-item *ngFor="let senha of senhasService.ultimasSenhas">
+          <ion-icon name="{{senha.icon}}" slot="start" color="{{senha.color}}"></ion-icon>
+          {{senha.codigo}}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
