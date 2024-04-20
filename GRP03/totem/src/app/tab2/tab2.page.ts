@@ -8,54 +8,46 @@ import { Senha } from '../services/senha.interface';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
-
-
-  public seconds: any;
   public botaoEstaDesabilitado: boolean = false;
-  public senhaEmAtendimento: any;
-  public senhaExame: any = 0;
-  public ultimaSenha:  string | undefined;
+  public senhaEmAtendimento: Senha | null = null;
+  public ultimaSenha: string | undefined;
 
   constructor(public senhasService: SenhasService, private zone: NgZone) {
   }
 
-  atenderSenha() {
 
+  atenderSenha(event: any) {
+    event.preventDefault();
     this.zone.run(() => {
-      if(this.senhaExame > 0) {
-        this.senhaEmAtendimento = {...this.senhasService.senhasOrdenadas.splice(this.senhaExame, 1)[0]}
-        this.senhaExame = 0;
-        this.ultimaSenha = this.senhaEmAtendimento?.tipoSenha;
-        this.senhasService.ultimasSenhas.push(this.senhaEmAtendimento);
-        return;
+      // Verifica se existe uma senha específica a ser atendida
+      if (this.ultimaSenha) {
+        const tipoProximaSenha = this.proximoTipoDeSenha(this.ultimaSenha);
+        const index = this.senhasService.senhasOrdenadas.findIndex(item => item.tipoSenha === tipoProximaSenha);
+        if (index !== -1) {
+          this.senhaEmAtendimento = this.senhasService.senhasOrdenadas.splice(index, 1)[0];
+        } else {
+          this.senhaEmAtendimento = this.senhasService.senhasOrdenadas.shift() || null;
+        }
+      } else {
+        // Pega a primeira senha da lista se não houver 'ultimaSenha'
+        this.senhaEmAtendimento = this.senhasService.senhasOrdenadas.shift() || null;
       }
-      if(this.ultimaSenha === "SP" ) {
-        this.senhaExame = this.senhasService.senhasOrdenadas.findIndex(item => item.tipoSenha == 'SE');
-        this.ultimaSenha = 'SE';
+
+      this.ultimaSenha = this.senhaEmAtendimento?.tipoSenha;
+      if (this.senhaEmAtendimento) {
         this.senhasService.ultimasSenhas.push(this.senhaEmAtendimento);
-        return;
       }
-  
-      if(this.ultimaSenha === "SE") {
-        this.senhaExame = this.senhasService.senhasOrdenadas.findIndex(item => item.tipoSenha == 'SG');
-        this.ultimaSenha = 'SG';
-        this.senhasService.ultimasSenhas.push(this.senhaEmAtendimento);
-        return;
-      }
-      console.log(this.senhaExame);
-      console.log();
-      
-      console.log(1);
-      this.senhaEmAtendimento = {...this.senhasService.senhasOrdenadas.shift()};
-      this.ultimaSenha = this.senhaEmAtendimento.tipoSenha; 
-  
-      this.senhasService.ultimasSenhas.push(this.senhaEmAtendimento);
-    })
-    
+    });
+  }
+
+  proximoTipoDeSenha(tipoAtual: string): string {
+    if (tipoAtual === 'SP') return 'SE';
+    if (tipoAtual === 'SE') return 'SG';
+    return 'SP'; // Volta ao início ou cobre outros casos
   }
 
   encerrarSenha() {
     this.botaoEstaDesabilitado = false;
+    this.ultimaSenha = undefined;  // Resetando a ultima senha para permitir recomeçar o ciclo
   }
 }

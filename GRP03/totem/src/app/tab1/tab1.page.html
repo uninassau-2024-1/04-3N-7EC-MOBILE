@@ -27,7 +27,7 @@
     <ion-card-content>
       <ion-list>
         <ion-list-header>Últimas senhas chamadas:</ion-list-header>
-        <ion-item *ngFor="let senha of senhasService.ultimasSenhas">
+        <ion-item *ngFor="let senha of senhasService.ultimasSenhas.slice(-5).reverse()">
           <ion-icon name="{{senha.icon}}" slot="start" color="{{senha.color}}"></ion-icon>
           {{senha.codigo}}
         </ion-item>

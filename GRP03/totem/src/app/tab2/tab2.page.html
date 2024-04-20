@@ -21,11 +21,8 @@
   Tempo Médio de Atendimento: {{ senhaEmAtendimento?.tempoMedio || 0 }} minuto(s).
  </ion-item>
  <ion-content>
-  <ion-button (click)="atenderSenha();" [disabled]="botaoEstaDesabilitado" expand="block" slot="fixed" color="dark" size="medium" style="position: fixed; bottom: 20px; right: 20px;">
+  <ion-button (onChange)="atenderSenha($event)" (click)="atenderSenha($event);" [disabled]="botaoEstaDesabilitado" expand="block" slot="fixed" color="dark" size="medium" style="position: fixed; bottom: 20px; right: 20px;">
     Atender Próximo
-  </ion-button>
-  <ion-button (click)="encerrarSenha()" expand="block" slot="fixed" color="dark" size="medium" style="position: fixed; bottom: 20px; right: 200px;">
-    Encerrar Atendimento
   </ion-button>
 
   <ion-card>

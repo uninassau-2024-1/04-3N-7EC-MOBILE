@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SenhasService } from '../services/senhas.service';
 import { PasswordService } from '../services/password.service';
+import { Senha } from '../services/senha.interface';
 
 @Component({
   selector: 'app-tab1',
@@ -18,4 +19,5 @@ export class Tab1Page {
   constructor (public senhasService: SenhasService, public passwordService: PasswordService) {
     this.senha = this.passwordService.senhas;
   }
+
 }

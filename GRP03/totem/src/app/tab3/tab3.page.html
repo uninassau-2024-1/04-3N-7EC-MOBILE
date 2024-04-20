@@ -18,13 +18,16 @@
     <ion-card-content>
       <ion-list>
         <ion-label> Relatórios </ion-label>
-        <ion-item> Senhas Emitidas: {{senhasService.senhasTotal}}</ion-item>
-        <ion-item> Senhas Geral: {{senhasService.senhasGeral}}</ion-item>
-        <ion-item> Senhas Prioritárias: {{senhasService.senhasPrior}}</ion-item>
-        <ion-item> Senhas Exame: {{senhasService.senhasExame}}</ion-item>
+        <div *ngIf="diaIniciado">
+          <ion-item> Senhas Emitidas: {{senhasService.senhasTotal}}</ion-item>
+          <ion-item> Senhas Geral: {{senhasService.senhasGeral}}</ion-item>
+          <ion-item> Senhas Prioritárias: {{senhasService.senhasPrior}}</ion-item>
+          <ion-item> Senhas Exame: {{senhasService.senhasExame}}</ion-item>
+        </div>
       </ion-list>
-      <ion-button>Iniciar Dia</ion-button>
-      <ion-button>Encerrar Dia</ion-button>
+      <ion-button (click)="iniciarDia()">Iniciar Dia</ion-button>
+      <ion-button (click)="encerrarDia()">Encerrar Dia</ion-button>
     </ion-card-content>
   </ion-card>
+
 </ion-content>
