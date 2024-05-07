@@ -1,17 +1,5 @@
 {
-  "name": "lista3",
-  "version": "0.0.1",
   "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "lint": "ng lint"
-  },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^17.0.2",
     "@angular/common": "^17.0.2",
@@ -32,6 +20,7 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
+  "description": "An Ionic project",
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.0",
     "@angular-eslint/builder": "^17.0.0",
@@ -60,5 +49,16 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.2.2"
   },
-  "description": "An Ionic project"
+  "homepage": "https://ionicframework.com/",
+  "name": "lista3",
+  "private": true,
+  "scripts": {
+    "build": "ng build",
+    "lint": "ng lint",
+    "ng": "ng",
+    "start": "ng serve",
+    "test": "ng test",
+    "watch": "ng build --watch --configuration development"
+  },
+  "version": "0.0.1"
 }
