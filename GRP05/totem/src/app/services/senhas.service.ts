@@ -9,9 +9,9 @@ export class SenhasService {
   constructor() { }
 
   private horaInicioExpediente: number = 7;
-  private horaFimExpediente: number = 17;
+  private horaFimExpediente: number = 22;
   public horaAtendimento: { [senha: string]: Date } = {};
-  
+
   public senhasGeral: number = 0;
   public senhasPrior: number = 0;
   public senhasExame: number = 0;
@@ -60,7 +60,7 @@ export class SenhasService {
   registrarAtendimento() {
     this.senhasAtendidas++;
   }
-  
+
   registrarAtendimentoPriorSP() {
     this.senhasAtendidasPriorSP++;
   }
@@ -78,19 +78,19 @@ export class SenhasService {
     this.senhasTotal++;
     this.novaSenha(tipoSenha);
   }
-  
+
   somaPrior(tipoSenha: string) {
     this.senhasPrior++;
     this.senhasTotal++;
     this.novaSenha(tipoSenha);
   }
-  
+
   somaExame(tipoSenha: string) {
     this.senhasExame++;
     this.senhasTotal++;
     this.novaSenha(tipoSenha);
   }
-  
+
   novaSenha(tipoSenha: string = '') {
     if (this.expedienteEmAndamento()) {
       const dataAtual = new Date();
@@ -100,18 +100,18 @@ export class SenhasService {
       const hora = dataAtual.getHours().toString().padStart(2, '0');
       const minuto = dataAtual.getMinutes().toString().padStart(2, '0');
       const segundos = dataAtual.getSeconds().toString().padStart(2, '0');
-  
+
       const numeroSenha = (this.senhasArray[tipoSenha].length + 1).toString().padStart(2, '0');
-  
+
       this.inputNovaSenha = `${ano}${mes}${dia}-${tipoSenha}${numeroSenha}`;
       this.senhasArray[tipoSenha].push(this.inputNovaSenha);
-      
+
       this.horaCriacaoSenha[this.inputNovaSenha] = new Date();
     } else {
       this.descartarSenhasForaExpediente();
     }
   }
-  
+
   pegaProximaSenha(): string | undefined {
 
     if (this.senhasArray['SP'].length > 0) {
@@ -193,7 +193,7 @@ calcularTempoMedioSG(): number {
 }
 
 formatarTempoEspera(tempo: number): string {
-  
+
   return tempo.toFixed(2);
 }
 
