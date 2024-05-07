@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Relatórios
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card-content> 
+    <ion-list class="listaSenhasRecentes"> 
+     <ion-item> Senhas Emitidas: {{senhasService.senhasTotal}}</ion-item>
+     <ion-item> Senhas Geral: {{senhasService.senhasGeral}}</ion-item>
+     <ion-item> Senhas Prioritárias: {{senhasService.senhasPrior}}</ion-item>
+     <ion-item> Senhas Exame: {{senhasService.senhasExame}}</ion-item>
+    </ion-list>
+  </ion-card-content>
+
+  <ion-card>
+    <ion-card-header>Tempo Médio de Atendimento: </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>Senha Geral: {{senhasService.mediaSg}} Segundos</ion-item>
+        <ion-item>Senha Prioritária: {{senhasService.mediaSp}} Segundos</ion-item>
+        <ion-item>Senha Exame: {{senhasService.mediaSe}} Segundos</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
