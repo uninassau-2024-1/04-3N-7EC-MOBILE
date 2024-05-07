@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Cliente
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card class="custom-card">
+    <ion-card-header>
+      <ion-label class="custom-input-label">Senha:</ion-label>
+      <ion-input readonly="true" class="custom-input" value="{{ inputNovaSenha }}"></ion-input>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Botões para gerar senhas -->
+      <ion-button class="custom-button" expand="block" (click)="emitirSenha('SG')">Senha Geral</ion-button>
+      <ion-button class="custom-button" expand="block" (click)="emitirSenha('SP')">Senha Prioritaria</ion-button>
+      <ion-button class="custom-button" expand="block" (click)="emitirSenha('SE')">Senha Exame</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Relatório
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Relatório</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+ <!-- <app-explore-container name="Tab 3 page"></app-explore-container> --> 
+
+ <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>Senhas emitidas: {{senhasService.senhasTotal}}</ion-item>
+        <ion-item>Senhas Geral: {{senhasService.senhasGeral}}</ion-item>
+        <ion-item>Senhas Prioritárias: {{senhasService.senhasPrior}}</ion-item>
+        <ion-item>Senhas Exame: {{senhasService.senhasExame}}</ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>Senhas atendidas(geral): {{ senhasService.senhasAtendidas }}</ion-item>
+        <ion-item>Senhas Prioritárias Atendidas: {{ senhasService.senhasAtendidasPriorSP }}</ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>Tempo médio(SP): {{ senhasService.formatarTempoEspera(senhasService.tempoMedioSP) }}</ion-item>
+        <ion-item>Tempo médio(SE): {{ senhasService.formatarTempoEspera(senhasService.tempoMedioSE) }}</ion-item>
+        <ion-item>Tempo médio(SG): {{ senhasService.formatarTempoEspera(senhasService.tempoMedioSG) }}</ion-item>
+
+      </ion-list>
+    </ion-card-content>
+ </ion-card>
+
+ <ion-button color="warning" expand="block" (click)="gerarRelatorioDoDia()" [disabled]="!senhasService.expedienteEmAndamento()">Gerar Relatório do Dia</ion-button>
+
+
+  <ion-list *ngIf="relatorioDoDia.length > 0">
+    <ion-item *ngFor="let item of relatorioDoDia">
+      <ion-label>
+        <h2>Numero {{ item.numeracao }}</h2>
+        <p>Senha: {{ item.senha }}</p>
+        <p>Data e Hora de Atendimento: {{ item.dataHoraAtendimento }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
