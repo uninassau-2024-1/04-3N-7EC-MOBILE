@@ -1,3 +1,3 @@
-# ALUNO
+# Aluno
 
-*João Fernando Correia da Silva - 01344679
+* Nome - Matrícula
