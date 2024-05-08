@@ -1,7 +1,0 @@
-{
-  "name": "toten",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
