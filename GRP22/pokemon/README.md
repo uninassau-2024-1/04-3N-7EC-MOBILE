@@ -1,3 +1,0 @@
-# Alunos
-
-* Nome - Matrícula
