@@ -61,7 +61,7 @@ export class Tab1Page {
 
     this.pokeAPIService.getPokeAPIService().subscribe((data: any) => {
       this.pokemon = data;
-      this.sharedService.addPokemon(this.pokemon); // Armazene o Pokémon no serviço compartilhado
+      this.sharedService.addPokemon(this.pokemon);
     });
   }
 }
