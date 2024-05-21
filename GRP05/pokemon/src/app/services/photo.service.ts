@@ -17,7 +17,7 @@ export class PhotoService {
     });
 
     const savedImageFile = await this.savePicture(capturedPhoto);
-    // Adicione aqui a lógica para lidar com o arquivo de imagem salvo, se necessário
+    
   }
 
   private async savePicture(photo: any) {
