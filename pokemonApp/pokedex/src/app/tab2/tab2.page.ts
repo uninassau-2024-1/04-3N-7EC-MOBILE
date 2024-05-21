@@ -1,42 +1,56 @@
-import { Component } from '@angular/core';
-import { SenhasService } from '../services/senhas.service';
-import { TimerService } from '../services/timer.service';
+import { Component, OnInit } from '@angular/core';
+import { PhotoService } from '../services/photo.service';
+import { PokeApiService } from '../services/poke-api.service';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  styleUrls: ['tab2.page.scss'],
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
+  pokemon: any = {};
+  battleResult: string = '';
 
-  public seconds: any;
-  public botaoEstaDesabilitado: boolean = false;
+  constructor(
+    public photoService: PhotoService,
+    private pokeApiService: PokeApiService
+  ) {}
 
-  constructor(public timerService: TimerService, public senhasService: SenhasService) {
-    this.seconds = timerService.second;
+  ngOnInit() {
+    this.loadRandomPokemon();
   }
 
-  start() {
-    this.timerService.start();
-    console.log('here')
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
   }
 
-  pause() {
-    this.timerService.pause();
+  loadRandomPokemon() {
+    this.pokeApiService.getPokeApiService().subscribe((data: any) => {
+      this.pokemon = {
+        name: data.name.toUpperCase(),
+        image: data.sprites.other['official-artwork'].front_default,
+        abilities: data.abilities.length,
+        height: data.height,
+        weight: data.weight,
+      };
+      this.comparePokemon();
+    });
   }
 
-  returnData() {
-    this.timerService.returnData(this.seconds);
-  }
-
-  atenderSenha() {
-    this.timerService.start();
-    this.botaoEstaDesabilitado = true;
-  }
-
-  encerrarSenha() {
-    this.timerService.pause();
-    this.timerService.reset();
-    this.botaoEstaDesabilitado = false;
+  comparePokemon() {
+    const tab1Abilities = parseInt(localStorage.getItem('tab1Abilities') || '0', 10);
+    const pokemonNameElement = document.getElementById('pokemonName');
+    if (pokemonNameElement) {
+      if (this.pokemon.abilities > tab1Abilities) {
+        this.battleResult = `${this.pokemon.name} Ganhou`;
+        pokemonNameElement.style.color = 'red';
+      } else if (this.pokemon.abilities < tab1Abilities) {
+        this.battleResult = `${this.pokemon.name} Perdeu`;
+        pokemonNameElement.style.color = 'green';
+      } else {
+        this.battleResult = `${this.pokemon.name} Empate`;
+        pokemonNameElement.style.color = 'yellow';
+      }
+    }
   }
 }
