@@ -8,10 +8,13 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title id="pokemonName">{{ pokemon.name }}</ion-card-title>
-      <ion-img [src]="pokemon.image"></ion-img>
+      <ion-img [src]="pokemon.image" style="width: 100px; height: auto;"></ion-img>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
+        <ion-item>
+          <ion-label>{{ battleResult }}</ion-label>
+        </ion-item>
         <ion-item>
           <ion-label>Abilities: {{ pokemon.abilities }}</ion-label>
         </ion-item>
@@ -21,9 +24,7 @@
         <ion-item>
           <ion-label>Weight: {{ pokemon.weight }}</ion-label>
         </ion-item>
-        <ion-item>
-          <ion-label>{{ battleResult }}</ion-label>
-        </ion-item>
+
       </ion-list>
     </ion-card-content>
   </ion-card>

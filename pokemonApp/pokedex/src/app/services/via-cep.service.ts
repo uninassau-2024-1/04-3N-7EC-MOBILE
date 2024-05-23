@@ -5,8 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ViaCEPService {
-  constructor(private httpClient: HttpClient) { }
-  getViaCEPService(cep: string = '52011210') {
-    return this.httpClient.get(`http://viacepservice.com.br/ws/${cep}/json`);
+  constructor(private httpClient: HttpClient) {}
+
+  getViaCEPService(cep: string) {
+    return this.httpClient.get(`https://viacep.com.br/ws/${cep}/json`);
   }
 }

@@ -12,14 +12,14 @@
   </ion-header>
 
   <ion-grid>
-    <ion-row *ngFor="let pokemon of capturedPokemons">
-      <ion-col size="6">
+    <ion-row >
+      <ion-col *ngFor="let pokemon of capturedPokemons" size="6">
         <ion-card>
           <ion-card-header>
             <ion-card-title>{{ pokemon.name }}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-img [src]="pokemon.image"></ion-img>
+            <ion-img [src]="pokemon.image" style="width: 40px; height: auto;"></ion-img>
             <ion-list>
               <ion-item>
                 <ion-label color="success">Vitórias: {{ pokemon.victories }}</ion-label>

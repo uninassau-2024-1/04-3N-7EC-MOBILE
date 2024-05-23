@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { IonTabs } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +9,14 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(private router: Router) {}
 
+  onTabChange(event: any) {
+    const tab = event.tab;
+    console.log('Tab changed to:', tab);
+  }
+
+  navigateToTab(tab: string) {
+    this.router.navigate([`/tabs/${tab}`]);
+  }
 }

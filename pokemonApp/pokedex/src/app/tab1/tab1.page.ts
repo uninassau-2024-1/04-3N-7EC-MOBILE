@@ -8,7 +8,7 @@ import { ViaCEPService } from '../services/via-cep.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  areaBuscarPokemon: string = '52011210';
+  areaBuscarPokemon: string = '';
   areaBusca: any = {
     bairro: '',
     localidade: '',
@@ -25,8 +25,14 @@ export class Tab1Page {
 
   // Função para buscar informações do CEP e do Pokémon
   buscarPokemon() {
+    const formattedCEP = this.formatCEP(this.areaBuscarPokemon);
+    if (!this.isValidCEP(formattedCEP)) {
+      alert('Por favor, insira um CEP válido no formato 00000-000 ou 00000000.');
+      return;
+    }
+
     // Buscar informações do CEP
-    this.viaCEPService.getViaCEPService(this.areaBuscarPokemon).subscribe((value: any) => {
+    this.viaCEPService.getViaCEPService(formattedCEP).subscribe((value: any) => {
       this.areaBusca.logradouro = value.logradouro;
       this.areaBusca.bairro = value.bairro;
       this.areaBusca.localidade = value.localidade;
@@ -44,6 +50,16 @@ export class Tab1Page {
       };
       this.saveCapturedPokemon();
     });
+  }
+
+  // Função para formatar o CEP
+  formatCEP(cep: string): string {
+    return cep.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+  }
+
+  // Função para validar o CEP
+  isValidCEP(cep: string): boolean {
+    return /^[0-9]{8}$/.test(cep);
   }
 
   // Função para salvar o Pokémon capturado

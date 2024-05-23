@@ -18,8 +18,8 @@
         fill="solid"
         label="CEP"
         label-placement="floating"
-        maxlength="8"
-        placeholder="22555888"
+        maxlength="9"
+        placeholder="00000-000"
         type="text"
       ></ion-input>
       <ion-button expand="block" fill="solid" (click)="buscarPokemon()">
@@ -39,7 +39,7 @@
   <ion-card *ngIf="pokemonData.name">
     <ion-card-header>
       <ion-card-title>{{ pokemonData.name }}</ion-card-title>
-      <ion-img [src]="pokemonData.image"></ion-img>
+      <ion-img [src]="pokemonData.image" style="width: 100px; height: auto;"></ion-img>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
