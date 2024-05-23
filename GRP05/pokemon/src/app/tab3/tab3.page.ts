@@ -12,7 +12,7 @@ export class Tab3Page implements OnInit {
   constructor(private sharedService: SharedService) {}
 
   ngOnInit() {
-    
+    // Inicialização inicial se necessário
   }
 
   ionViewWillEnter() {

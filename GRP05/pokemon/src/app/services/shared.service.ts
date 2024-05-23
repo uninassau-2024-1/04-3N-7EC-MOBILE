@@ -28,8 +28,7 @@ export class SharedService {
     return this.pokemonList.length > 0 ? this.pokemonList[this.pokemonList.length - 1] : null;
   }
 
-  updatePokemonStats(name: string, result: 'win' | 'lose' | 'draw') {
-    const pokemon = this.pokemonList.find(p => p.name === name);
+  updatePokemonStats(pokemon: any, result: 'win' | 'lose' | 'draw') {
     if (pokemon) {
       if (result === 'win') {
         pokemon.victories += 1;

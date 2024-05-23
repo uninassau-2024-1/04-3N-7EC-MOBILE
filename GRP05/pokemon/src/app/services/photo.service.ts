@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +18,7 @@ export class PhotoService {
     });
 
     const savedImageFile = await this.savePicture(capturedPhoto);
-    
+    // Adicione aqui a lógica para lidar com o arquivo de imagem salvo, se necessário
   }
 
   private async savePicture(photo: any) {
