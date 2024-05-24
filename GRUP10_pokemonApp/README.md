@@ -127,4 +127,4 @@ loadCapturedPokemons() {
 
 ## Conclusão
 
-Este aplicativo é um exemplo de como usar Ionic, Angular, e APIs externas para construir uma aplicação móvel com funcionalidades avançadas, como busca por CEP e exibição de dados de Pokémons.
+Este aplicativo é um exemplo de como usar Ionic, Angular, e APIs externas para construir uma aplicação móvel com funcionalidades avançadas, como busca por CEP, com suas respectivas informações e exibição de dados de Pokémons.
