@@ -1,0 +1,24 @@
+.custom-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+  }
+  
+  .custom-button {
+    --border-radius: 8px;
+    --background: linear-gradient(90deg, #667eea, #764ba2);
+    --background-activated: linear-gradient(90deg, #764ba2, #667eea);
+    --background-hover: linear-gradient(90deg, #667eea, #764ba2);
+    --color: #fff; /* Adicionei a cor do texto aqui */
+    margin-bottom: 10px;
+  }
+  
+  .custom-input-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  

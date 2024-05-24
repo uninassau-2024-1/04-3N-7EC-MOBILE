@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Atendente
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+
+    <ion-card-content> 
+
+        <ion-button expand="block" (click)="senhasService.chamarProximaSenha()" *ngIf="!senhasService.senhaFoiChamada"> CHAMAR SENHA </ion-button>
+        <ion-button color="success" expand="block" (click)="senhasService.inicarAtendimento()" *ngIf="!senhasService.atendendo && senhasService.senhaFoiChamada" > INICIAR ATENDIMENTO </ion-button>
+        <ion-button color="danger" expand="block" (click)="senhasService.encerrarAtendimento()" *ngIf="senhasService.atendendo"> ENCERRAR ATENDIMENTO </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+ 
+</ion-content>
