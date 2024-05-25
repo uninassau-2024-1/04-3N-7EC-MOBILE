@@ -45,6 +45,7 @@ export class Tab1Page {
   }
 
   buscarPokemon() {
+    
     if (!this.areaBuscarPokemon || this.areaBuscarPokemon.length < 9) {
       this.presentToast('Por favor, insira um CEP válido.');
       return;
@@ -61,7 +62,7 @@ export class Tab1Page {
 
     this.pokeAPIService.getPokeAPIService().subscribe((data: any) => {
       this.pokemon = data;
-      this.sharedService.addPokemon(this.pokemon); // Armazene o Pokémon no serviço compartilhado
+      this.sharedService.addPokemon(this.pokemon); 
     });
   }
 }

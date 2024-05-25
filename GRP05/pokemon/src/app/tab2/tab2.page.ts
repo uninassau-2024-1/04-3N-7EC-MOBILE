@@ -50,37 +50,59 @@ export class Tab2Page implements OnInit {
     const randomId = Math.floor(Math.random() * 100) + 1;
     this.pokeAPIService.getPokeAPIService(randomId).subscribe((data: any) => {
       this.pokemon = data;
-      this.comparePokemonAbilities();
+      this.comparePokemon();
     });
   }
 
-  comparePokemonAbilities() {
+  comparePokemon() {
     const tab1Pokemon = this.sharedService.getLastPokemon();
-    const tab1PokemonAbilities = tab1Pokemon?.abilities?.length || 0;
-    const tab1PokemonHeight = tab1Pokemon?.height || 0;
-    const tab1PokemonWeight = tab1Pokemon?.weight || 0;
 
-    const tab2PokemonAbilities = this.pokemon?.abilities?.length || 0;
-    const tab2PokemonHeight = this.pokemon?.height || 0;
-    const tab2PokemonWeight = this.pokemon?.weight || 0;
+    const tab1PokemonStats = {
+      abilities: tab1Pokemon?.abilities?.length || 0,
+      height: tab1Pokemon?.height || 0,
+      weight: tab1Pokemon?.weight || 0
+    };
 
-    if (tab2PokemonAbilities === tab1PokemonAbilities && 
-        tab2PokemonHeight === tab1PokemonHeight && 
-        tab2PokemonWeight === tab1PokemonWeight) {
+    const tab2PokemonStats = {
+      abilities: this.pokemon?.abilities?.length || 0,
+      height: this.pokemon?.height || 0,
+      weight: this.pokemon?.weight || 0
+    };
+
+    let tab1Wins = 0;
+    let tab2Wins = 0;
+
+    
+    if (tab2PokemonStats.abilities > tab1PokemonStats.abilities) {
+      tab2Wins++;
+    } else if (tab2PokemonStats.abilities < tab1PokemonStats.abilities) {
+      tab1Wins++;
+    }
+
+    if (tab2PokemonStats.height > tab1PokemonStats.height) {
+      tab2Wins++;
+    } else if (tab2PokemonStats.height < tab1PokemonStats.height) {
+      tab1Wins++;
+    }
+
+    if (tab2PokemonStats.weight > tab1PokemonStats.weight) {
+      tab2Wins++;
+    } else if (tab2PokemonStats.weight < tab1PokemonStats.weight) {
+      tab1Wins++;
+    }
+
+    if (tab1Wins > tab2Wins) {
+      this.comparisonResult = 'Perdeu';
+      this.comparisonColor = 'green';
+      this.sharedService.updatePokemonStats(tab1Pokemon, 'win');
+    } else if (tab2Wins > tab1Wins) {
+      this.comparisonResult = 'Ganhou';
+      this.comparisonColor = 'red';
+      this.sharedService.updatePokemonStats(tab1Pokemon, 'lose');
+    } else {
       this.comparisonResult = 'Empate';
       this.comparisonColor = 'yellow';
       this.sharedService.updatePokemonStats(tab1Pokemon, 'draw');
-    } else if (tab2PokemonAbilities > tab1PokemonAbilities ||
-               tab2PokemonHeight > tab1PokemonHeight ||
-               tab2PokemonWeight > tab1PokemonWeight) {
-      this.comparisonResult = 'Ganhou';
-      this.comparisonColor = 'red';
-      this.sharedService.updatePokemonStats(tab1Pokemon, 'win');
-    } else {
-      this.comparisonResult = 'Perdeu';
-      this.comparisonColor = 'green';
-      this.sharedService.updatePokemonStats(tab1Pokemon, 'lose');
     }
-}
-
+  }
 }
