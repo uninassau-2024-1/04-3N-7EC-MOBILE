@@ -1,0 +1,1 @@
+{"version":3,"file":"cyclomatic-complexity.d.ts","sourceRoot":"","sources":["../../src/rules/cyclomatic-complexity.ts"],"names":[],"mappings":"AAOA,KAAK,OAAO,GAAG,CAAC;IAAE,aAAa,EAAE,MAAM,CAAA;CAAE,CAAC,CAAC;AAC3C,MAAM,MAAM,UAAU,GAAG,sBAAsB,CAAC;AAChD,eAAO,MAAM,SAAS,0BAA0B,CAAC;;AAIjD,wBA+CG"}

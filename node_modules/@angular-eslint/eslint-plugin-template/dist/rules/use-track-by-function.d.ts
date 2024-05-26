@@ -1,0 +1,8 @@
+type Options = [{
+    readonly alias: readonly string[];
+}];
+export type MessageIds = 'useTrackByFunction';
+export declare const RULE_NAME = "use-track-by-function";
+declare const _default: import("@typescript-eslint/utils/ts-eslint").RuleModule<"useTrackByFunction", Options, import("@typescript-eslint/utils/ts-eslint").RuleListener>;
+export default _default;
+//# sourceMappingURL=use-track-by-function.d.ts.map

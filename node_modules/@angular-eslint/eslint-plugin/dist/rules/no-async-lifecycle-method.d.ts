@@ -1,0 +1,5 @@
+export type MessageIds = 'noAsyncLifecycleMethod';
+export declare const RULE_NAME = "no-async-lifecycle-method";
+declare const _default: import("@typescript-eslint/utils/ts-eslint").RuleModule<"noAsyncLifecycleMethod", [], import("@typescript-eslint/utils/ts-eslint").RuleListener>;
+export default _default;
+//# sourceMappingURL=no-async-lifecycle-method.d.ts.map

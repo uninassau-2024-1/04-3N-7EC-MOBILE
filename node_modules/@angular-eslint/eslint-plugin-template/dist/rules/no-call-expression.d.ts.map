@@ -1,0 +1,1 @@
+{"version":3,"file":"no-call-expression.d.ts","sourceRoot":"","sources":["../../src/rules/no-call-expression.ts"],"names":[],"mappings":"AAMA,KAAK,OAAO,GAAG;IACb;QACE,QAAQ,CAAC,SAAS,CAAC,EAAE,SAAS,MAAM,EAAE,CAAC;KACxC;CACF,CAAC;AACF,MAAM,MAAM,UAAU,GAAG,kBAAkB,CAAC;AAC5C,eAAO,MAAM,SAAS,uBAAuB,CAAC;;AAE9C,wBAqDG"}

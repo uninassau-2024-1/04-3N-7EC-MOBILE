@@ -1,0 +1,8 @@
+type Options = [{
+    readonly allowStatic?: boolean;
+}];
+export type MessageIds = 'noHostMetadataProperty';
+export declare const RULE_NAME = "no-host-metadata-property";
+declare const _default: import("@typescript-eslint/utils/ts-eslint").RuleModule<"noHostMetadataProperty", Options, import("@typescript-eslint/utils/ts-eslint").RuleListener>;
+export default _default;
+//# sourceMappingURL=no-host-metadata-property.d.ts.map
