@@ -1,9 +1,0 @@
-import type { TSESLint } from '@typescript-eslint/utils';
-type Options = [{
-    readonly allowNullOrUndefined?: boolean;
-}];
-export type MessageIds = 'eqeqeq' | 'suggestStrictEquality';
-export declare const RULE_NAME = "eqeqeq";
-declare const _default: TSESLint.RuleModule<MessageIds, Options, TSESLint.RuleListener>;
-export default _default;
-//# sourceMappingURL=eqeqeq.d.ts.map
