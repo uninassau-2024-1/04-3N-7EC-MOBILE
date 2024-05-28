@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Relatórios
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Relatórios</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card class="report-card">
+    <ion-card-header>
+      <ion-card-title>Relatório de Senhas:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none">
+        <!-- Seção de relatório de senhas aqui -->
+        <ion-item class="report-item">
+          <ion-label>Senhas Gerais:</ion-label>
+          <ion-badge slot="end" color="primary">{{ senhasService.senhasGeral }}</ion-badge>
+        </ion-item>
+        <ion-item class="report-item">
+          <ion-label>Senhas Prioritárias:</ion-label>
+          <ion-badge slot="end" color="primary">{{ senhasService.senhasPrior }}</ion-badge>
+        </ion-item>
+        <ion-item class="report-item">
+          <ion-label>Senhas Exames:</ion-label>
+          <ion-badge slot="end" color="primary">{{ senhasService.senhasExame }}</ion-badge>
+        </ion-item>
+        <ion-item class="report-item">
+          <ion-label>Senhas Emitidas:</ion-label>
+          <ion-badge slot="end" color="primary">{{ senhasService.senhasTotal }}</ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Card para exibir a senha chamada -->
+  <ion-card class="senha-chamada-card">
+    <ion-card-header>
+      <ion-card-title>Senha Chamada:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>{{ senhasService.senhaChamada }}</ion-label>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
