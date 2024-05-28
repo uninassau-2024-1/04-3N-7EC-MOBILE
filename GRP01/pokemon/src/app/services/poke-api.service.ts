@@ -26,7 +26,7 @@ export class PokeApiService {
   getPokeApiService() : Observable<any> {
     this.id = Math.floor(Math.random() * 100)
     if(this.id==0){
-      this.id = 1;
+      this.id = 151;
     }
     return this.httpClient.get<any>(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
   }
