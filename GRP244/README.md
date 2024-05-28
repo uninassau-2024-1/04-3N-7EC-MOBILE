@@ -1,4 +1,6 @@
 # Alunos
 
-* Gabriel Francisco Ribeiro Da Silva - 01406104
-* Issac Barbosa Cavalcanti Júnior - 01428350
+* GABRIEL FRANCISCO RIBEIRO DA SILVA - 01406104
+* ISSAC BARBOSA CAVALCANTI JUNIOR - 01428350
+
+
