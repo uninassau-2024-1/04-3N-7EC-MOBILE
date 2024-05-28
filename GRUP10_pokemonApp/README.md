@@ -1,6 +1,7 @@
-* João Fernando Correia da Silva - 01344679
-* Vinicius Gutemberg Araújo Lima - 01435396
 * Fagner Alves da Costa  - 01319957
+* João Fernando Correia da Silva - 01344679
+* Matheus Vinícius Gomes dos Santos - 01355958
+* Vinicius Gutemberg Araújo Lima - 01435396
 
 # PokémonApp
 
@@ -53,8 +54,6 @@ buscarPokemon() {
 
 ---
 
-
-
 > 1. Esta função busca informações de um Pokémon com base no CEP fornecido pelo usuário. Ela formata o CEP, valida seu formato e, se válido, faz duas requisições: uma para a ViaCEP API para obter informações de endereço, e outra para a PokeAPI para obter informações do Pokémon. Após obter os dados, a função salva o Pokémon capturado.
 
 ### 2. Função para Formatar o CEP (`tab1.page.ts`)
@@ -65,12 +64,9 @@ formatCEP(cep: string): string {
 }
 ```
 
-
-
 ---
 
 > 2. Esta função formata o CEP removendo todos os caracteres não numéricos, garantindo que o CEP esteja no formato correto para a consulta.
->
 
 ### 3. Função para Validar o CEP (`tab1.page.ts`)
 
@@ -83,7 +79,6 @@ isValidCEP(cep: string): boolean {
 ---
 
 > 3. Esta função valida se o CEP fornecido está no formato correto (00000000), retornando verdadeiro se estiver e falso caso contrário.
->
 
 ### 4. Função para Salvar o Pokémon Capturado (`tab1.page.ts`)
 
@@ -105,7 +100,6 @@ saveCapturedPokemon() {
 ---
 
 > 4. Esta função salva os dados do Pokémon capturado no armazenamento local do navegador, permitindo que os dados sejam persistidos entre as sessões de uso do aplicativo.
->
 
 ### 5. Função para Capturar Foto (`tab2.page.ts`)
 
@@ -118,7 +112,6 @@ addPhotoToGallery() {
 ---
 
 > 5. Esta função utiliza o serviço `PhotoService` para capturar uma nova foto e adicioná-la à galeria do dispositivo.
->
 
 ### 6. Função para Carregar um Pokémon Aleatório (`tab2.page.ts` e `tab3.page.ts`)
 
@@ -139,7 +132,6 @@ loadRandomPokemon() {
 ---
 
 > 6. Esta função faz uma requisição à PokeAPI para obter um Pokémon aleatório e suas informações. Os dados do Pokémon são então armazenados em um objeto `pokemon`.
->
 
 ### 7. Função para Comparar Habilidades dos Pokémons (`tab2.page.ts`)
 
@@ -165,7 +157,6 @@ comparePokemon() {
 ---
 
 > 7. Esta função compara as habilidades do Pokémon capturado com as habilidades do Pokémon buscado na `tab1`. Dependendo do resultado, ela atualiza o texto e a cor para indicar vitória, derrota ou empate.
->
 
 ### 8. Função para Carregar Pokémons Capturados (`tab3.page.ts`)
 
@@ -178,7 +169,6 @@ loadCapturedPokemons() {
 ---
 
 > 8. Esta função carrega os dados dos Pokémons capturados do armazenamento local do navegador, permitindo que eles sejam exibidos na `tab3`.
-
 
 ## Conclusão
 
