@@ -7,3 +7,5 @@
 * Lucas Melo Rocha - 01421614
 * Luis Felipe Pernambucano Costa - 01427477
 * Xaiane Borges - 01486910
+
+- Ficou lindo!
