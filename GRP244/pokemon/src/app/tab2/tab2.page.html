@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Batalhar
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="pokemon" class="pokemon-info">
+    <h2>{{ pokemon.name }}</h2>
+    <h3 [style.color]="resultColor">{{ resultText }}</h3>
+    <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" class="pokemon-image"/>
+    <ion-list>
+      <ion-item>
+        <ion-label>Abilities: {{ pokemon.abilities.length }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Height: {{ pokemon.height }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Weight: {{ pokemon.weight }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="addPhotoToGallery()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
