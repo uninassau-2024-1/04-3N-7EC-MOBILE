@@ -2,14 +2,15 @@
 
 * Ezequiel Gomes Lopes - 01406995
  * Fabio mendeiros 10005596
+ * Matheus Vinícius Gomes dos Santos-01355958
 
 
 
 
-##Descrição
+#Descrição
 Este projeto consiste em um aplicativo desenvolvido com Ionic para buscar Pokémons e exibir suas informações com base no CEP fornecido. Além disso, o aplicativo permite capturar Pokémons e visualizar uma lista dos Pokémons capturados.
 
-##Tecnologias Utilizadas
+#Tecnologias Utilizadas
 Ionic Framework: Usado para construir a interface do aplicativo.
 Angular: Utilizado como framework principal para o desenvolvimento do aplicativo.
 Capacitor: Empregado para integrar o aplicativo com funcionalidades nativas do dispositivo, como a câmera.
@@ -17,7 +18,7 @@ ViaCEP API: Utilizada para buscar informações de endereço com base no CEP for
 PokeAPI: Utilizada para buscar informações sobre os Pokémons.
 
 
-##Estrutura do Projeto
+#Estrutura do Projeto
 O projeto possui três abas principais:
 
 Tab 1 (Caçar Pokémon): Permite buscar informações de um Pokémon com base no CEP fornecido.
@@ -53,7 +54,7 @@ buscarPokemon() {
   });
 }
 
-##Descrição da Função
+#Descrição da Função
 A função buscarPokemon realiza a busca de informações de um Pokémon com base no CEP fornecido. Ela formata o CEP, valida se está no formato correto e, se válido, utiliza a API ViaCEP para buscar informações de endereço e a PokeAPI para buscar informações do Pokémon.
 
 Formatação e Validação do CEP:
@@ -107,7 +108,7 @@ buscarPokemon() {
 }
 
 
-##Função para Formatar o CEP (tab1.page.ts):
+#Função para Formatar o CEP (tab1.page.ts):
 typescript
 Copiar código
 formatCEP(cep: string): string {
@@ -138,7 +139,7 @@ saveCapturedPokemon() {
   localStorage.setItem('capturedPokemons', JSON.stringify(capturedPokemons));
   localStorage.setItem('tab1Abilities', this.pokemonData.abilities.toString());
 }
-##Descrição das Funções
+#Descrição das Funções
 Função para Buscar Pokémon:
 
 Realiza a formatação e validação do CEP.
