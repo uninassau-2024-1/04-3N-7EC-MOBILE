@@ -4,5 +4,5 @@ find . -type d -name '.vscode'      -exec rm -rf {} +
 find . -type d -name 'node_modules' -exec rm -rf {} +
 
 git add .
-git commit -m 'Revisão Projeto 1'
+git commit -m 'Revisão Projeto 2'
 git push origin main

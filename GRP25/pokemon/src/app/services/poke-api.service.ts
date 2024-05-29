@@ -1,19 +1,33 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PokeAPIService {
-  constructor(private httpClient: HttpClient) {}
+export class PokeApiService {
+  public id: number = 0;
+  public lastPokemonAbility: number = 0
+  public adversaryAbility: number = 0
+  public pokemon:any ={
+      name:'',
+      image:'',
+      vitorias:'0',
+      empates:'0',
+      derrotas:'0'
+    }
+    public pokemons:{ name:'',image:'',vitorias:0,empates:0,derrotas:0}[]
+    =[
+    ]
 
-  getPokeAPIService(id: number) {
-    const timestamp = new Date().getTime(); 
-    return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/${id}?timestamp=${timestamp}`);
-  }
 
-  getRandomPokemon() {
-    const randomId = Math.floor(Math.random() * 100) + 1; 
-    return this.getPokeAPIService(randomId);
+  constructor(private httpClient: HttpClient) { }
+
+  getPokeApiService() : Observable<any> {
+    this.id = Math.floor(Math.random() * 100)
+    if(this.id==0){
+      this.id = 151;
+    }
+    return this.httpClient.get<any>(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
   }
 }

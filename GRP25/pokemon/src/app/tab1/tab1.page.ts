@@ -1,7 +1,6 @@
+import { ViaCepService } from './../services/via-cep.service';
+import { PokeApiService } from './../services/poke-api.service';
 import { Component } from '@angular/core';
-import { PokeAPIService } from '../services/poke-api.service';
-import { ViaCEPService } from '../services/via-cep.service';
-import { TabsPage } from '../tabs/tabs.page';
 
 @Component({
   selector: 'app-tab1',
@@ -9,37 +8,58 @@ import { TabsPage } from '../tabs/tabs.page';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  areaBuscarPokemon: string = '52011210';
-  areaBusca: any = {
-    bairro: '',
-    localidade: '',
+  areaBuscarPokemon: string=  '';
+  areaBuscar: any = {
+    bairro:'',
+    localidade:'',
     logradouro: '',
-    uf: ''
+    uf:''
   };
-  pokemon: any = null;
+  public pokemon:any={
+    name:'',
+    image:'',
+    abilities:'',
+    height:'',
+    weight:''
+
+  }
+  
 
   constructor(
-    private pokeAPIService: PokeAPIService,
-    private viaCEPService: ViaCEPService,
-    private tabsPage: TabsPage
-  ) {
-    this.loadBulbasaur();
-  }
-
+    private PokeApiService: PokeApiService,
+    private ViaCepService: ViaCepService
+  ) { }
+    
   buscarPokemon() {
-    this.viaCEPService.getViaCEPService(this.areaBuscarPokemon).subscribe((value) => {
-      this.areaBusca.logradouro = JSON.parse(JSON.stringify(value))['logradouro'];
-      this.areaBusca.bairro = ', ' + JSON.parse(JSON.stringify(value))['bairro'];
-      this.areaBusca.localidade = ' - ' + JSON.parse(JSON.stringify(value))['localidade'];
-      this.areaBusca.uf = '-' + JSON.parse(JSON.stringify(value))['uf'];
+    this.ViaCepService.getViaCepService(this.areaBuscarPokemon).subscribe((value) => {
+      this.areaBuscar.logradouro = JSON.parse(JSON.stringify(value)) ['logradouro'];
+      this.areaBuscar.bairro= ', '+ JSON.parse(JSON.stringify(value))["bairro"];
+      this.areaBuscar.localidade= ' - '+JSON.parse(JSON.stringify(value)) ['localidade'];
+      this.areaBuscar.uf= '-'+JSON.parse(JSON.stringify(value)) ['uf'];
     });
-  }
 
-  loadBulbasaur() {
-    this.pokeAPIService.getPokeAPIService(1).subscribe((pokemon) => {
-      this.pokemon = pokemon;
-      this.tabsPage.tab1Pokemon = pokemon;
-      console.log('Pokémon carregado na Tab1:', pokemon);
+    this.PokeApiService.getPokeApiService()
+    .subscribe((value)=>{
+      this.pokemon.weight = JSON.parse(JSON.stringify(value))['weight'];
+      this.pokemon.name = JSON.parse(JSON.stringify(value))['name'];
+      this.pokemon.height = JSON.parse(JSON.stringify(value))['height'];
+      this.pokemon.abilities = JSON.parse(JSON.stringify(value))['abilities'].length;
+      this.pokemon.image = JSON.parse(JSON.stringify(value))['sprites'].other.dream_world.front_default;
+      this.PokeApiService.pokemon.name = JSON.parse(JSON.stringify(value))['name'];
+      this.PokeApiService.pokemon.image = JSON.parse(JSON.stringify(value))['sprites'].other.dream_world.front_default;
+   
+// agora atividade 7
+      this.PokeApiService.lastPokemonAbility = this.pokemon.abilities;
+      this.PokeApiService.pokemon.vitorias = 0
+      this.PokeApiService.pokemon.derrotas = 0
+      this.PokeApiService.pokemon.empates = 0
+      this.PokeApiService.pokemons.push({
+        name:JSON.parse(JSON.stringify(value))['name'],
+        image:JSON.parse(JSON.stringify(value))['sprites'].other.dream_world.front_default,
+        vitorias:0,
+        empates:0,
+        derrotas:0
+      });
     });
   }
 }

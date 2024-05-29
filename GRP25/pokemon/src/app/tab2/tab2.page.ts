@@ -1,60 +1,67 @@
 import { Component, OnInit } from '@angular/core';
+import { PokeApiService } from '../services/poke-api.service';
 import { PhotoService } from '../services/photo.service';
-import { PokeAPIService } from '../services/poke-api.service';
-import { TabsPage } from '../tabs/tabs.page';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page implements OnInit {
-  public pokemon: any;
-  public resultText: string = '';
-  public resultColor: string = '';
+export class Tab2Page implements OnInit{
+  pokemonAdversary:any={
+    name:'',
+    image:'',
+    abilities:'',
+    height:'',
+    weight:''
+
+  }
+  resultado:string = ''
+
 
   constructor(
-    public photoService: PhotoService,
-    private pokeAPIService: PokeAPIService,
-    private tabsPage: TabsPage
-  ) {}
-
-  ngOnInit() {
-    this.loadRandomPokemon();
+    private PokeApiService:PokeApiService,
+    public photoService:PhotoService
+  ){ }
+  ngOnInit(): void {
   }
 
-  async loadRandomPokemon() {
-    try {
-      const response: any = await this.pokeAPIService.getRandomPokemon().toPromise();
-      this.pokemon = response;
-      this.comparePokemonSkills();
-    } catch (error) {
-      console.error('Erro ao carregar Pokémon:', error);
-    }
+  buscarPokemon(){
+    this.PokeApiService.getPokeApiService()
+      .subscribe(value => {
+        this.pokemonAdversary.weight = JSON.parse(JSON.stringify(value))['weight'];
+        this.pokemonAdversary.name = JSON.parse(JSON.stringify(value))['name'];
+        this.pokemonAdversary.height = JSON.parse(JSON.stringify(value))['height'];
+        this.pokemonAdversary.abilities = JSON.parse(JSON.stringify(value))['abilities'].length;
+        this.pokemonAdversary.image = JSON.parse(JSON.stringify(value))['sprites'].other.dream_world.front_default;
+        this.PokeApiService.adversaryAbility = this.pokemonAdversary.abilities;
+        console.log(this.PokeApiService.lastPokemonAbility)
+        console.log(this.PokeApiService.adversaryAbility)
+        this.setResultado();
+      });
+  }
+  ionViewDidEnter(){
+    this.buscarPokemon()
   }
 
-  comparePokemonSkills() {
-    const tab1Pokemon = this.tabsPage.tab1Pokemon;
-    console.log('Pokémon carregado na Tab2 (Tab1 Pokémon):', tab1Pokemon);
-    if (!tab1Pokemon) {
-      this.resultText = 'Nenhum Pokémon carregado na Tab1';
-      this.resultColor = 'white';
-      return;
-    }
-
-    if (this.pokemon.abilities.length === tab1Pokemon.abilities.length) {
-      this.resultText = 'Empate';
-      this.resultColor = 'yellow';
-    } else if (this.pokemon.abilities.length > tab1Pokemon.abilities.length) {
-      this.resultText = 'Ganhou';
-      this.resultColor = 'red';
-    } else {
-      this.resultText = 'Perdeu';
-      this.resultColor = 'green';
-    }
+  addPhotoToGallery(){
+    this.photoService.addNewToGallery()
   }
 
-  addPhotoToGallery() {
-    this.photoService.addNewToGallery();
+  setResultado(){
+     if(this.PokeApiService.adversaryAbility === this.PokeApiService.lastPokemonAbility){
+        this.resultado = 'Empate'
+        this.PokeApiService.pokemon.empates = this.PokeApiService.pokemon.empates+1
+        this.PokeApiService.pokemons[this.PokeApiService.pokemons.length-1].empates++ 
+     }else if(this.PokeApiService.adversaryAbility > this.PokeApiService.lastPokemonAbility){
+        this.resultado = 'Você perdeu'
+        this.PokeApiService.pokemon.derrotas = this.PokeApiService.pokemon.derrotas+1
+        this.PokeApiService.pokemons[this.PokeApiService.pokemons.length-1].derrotas++
+     }else{
+        this.resultado = 'Você venceu '
+        this.PokeApiService.pokemon.vitorias = this.PokeApiService.pokemon.vitorias+1
+        this.PokeApiService.pokemons[this.PokeApiService.pokemons.length-1].vitorias++
+     }
   }
+
 }
